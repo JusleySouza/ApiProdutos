@@ -1,0 +1,54 @@
+2022-11-25 16:14:07.479  INFO 14288 --- [RMI TCP Connection(13)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-25 16:14:07.494  INFO 14288 --- [RMI TCP Connection(13)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 16:14:07.496  INFO 14288 --- [RMI TCP Connection(13)-127.0.0.1] o.a.c.c.C.[.[localhost].[/productapi]    : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 16:14:07.504  INFO 14288 --- [RMI TCP Connection(13)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-25 16:14:07.506  INFO 14288 --- [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-25 16:14:07.515  INFO 14288 --- [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-25 16:16:20.551  INFO 10004 --- [main] c.j.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17.0.2 on DESKTOP-9AR22OI with PID 10004 (C:\Users\jusle\Documents\workspace-spring-tool-suite-4-4.14.0.RELEASE\productrestapi\target\classes started by jusle in C:\Users\jusle\Documents\workspace-spring-tool-suite-4-4.14.0.RELEASE\productrestapi)
+2022-11-25 16:16:20.562  INFO 10004 --- [main] c.j.springweb.ProductrestapiApplication  : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 16:16:21.626  INFO 10004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-25 16:16:21.687  INFO 10004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interfaces.
+2022-11-25 16:16:22.319  INFO 10004 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-25 16:16:22.330  INFO 10004 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 16:16:22.330  INFO 10004 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.69]
+2022-11-25 16:16:22.468  INFO 10004 --- [main] o.a.c.c.C.[.[localhost].[/productapi]    : Initializing Spring embedded WebApplicationContext
+2022-11-25 16:16:22.469  INFO 10004 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1743 ms
+2022-11-25 16:16:22.675  INFO 10004 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-25 16:16:23.102  INFO 10004 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-25 16:16:23.154  INFO 10004 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-25 16:16:23.213  INFO 10004 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2022-11-25 16:16:23.527  INFO 10004 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-25 16:16:23.696  INFO 10004 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-11-25 16:16:24.337  INFO 10004 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-25 16:16:24.361  INFO 10004 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-25 16:16:24.701  WARN 10004 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-25 16:16:25.135  INFO 10004 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/productapi'
+2022-11-25 16:16:25.145  INFO 10004 --- [main] c.j.springweb.ProductrestapiApplication  : Started ProductrestapiApplication in 5.201 seconds (JVM running for 5.989)
+2022-11-25 16:16:40.452  INFO 10004 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/productapi]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 16:16:40.452  INFO 10004 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-25 16:16:40.453  INFO 10004 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-11-25 16:16:40.493  INFO 10004 --- [http-nio-8080-exec-2] c.j.s.controllers.ProductRestController  : Finding product by ID:1
+2022-11-25 16:21:07.948  INFO 10004 --- [RMI TCP Connection(14)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-25 16:21:07.962  INFO 10004 --- [RMI TCP Connection(14)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 16:21:07.964  INFO 10004 --- [RMI TCP Connection(14)-127.0.0.1] o.a.c.c.C.[.[localhost].[/productapi]    : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 16:21:07.972  INFO 10004 --- [RMI TCP Connection(14)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-25 16:21:07.974  INFO 10004 --- [RMI TCP Connection(14)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-25 16:21:07.984  INFO 10004 --- [RMI TCP Connection(14)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-25 16:21:13.234  INFO 11944 --- [main] c.j.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17.0.2 on DESKTOP-9AR22OI with PID 11944 (C:\Users\jusle\Documents\workspace-spring-tool-suite-4-4.14.0.RELEASE\productrestapi\target\classes started by jusle in C:\Users\jusle\Documents\workspace-spring-tool-suite-4-4.14.0.RELEASE\productrestapi)
+2022-11-25 16:21:13.237  INFO 11944 --- [main] c.j.springweb.ProductrestapiApplication  : No active profile set, falling back to 1 default profile: "default"
+2022-11-25 16:21:14.652  INFO 11944 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-25 16:21:14.653  INFO 11944 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.69]
+2022-11-25 16:21:14.798  INFO 11944 --- [main] o.a.c.c.C.[.[localhost].[/productapi]    : Initializing Spring embedded WebApplicationContext
+2022-11-25 16:21:15.020  INFO 11944 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-25 16:21:15.447  INFO 11944 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-25 16:21:15.505  INFO 11944 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-25 16:21:15.586  INFO 11944 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2022-11-25 16:21:15.878  INFO 11944 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-25 16:21:16.038  INFO 11944 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-11-25 16:21:16.637  INFO 11944 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-25 16:21:17.388  INFO 11944 --- [main] c.j.springweb.ProductrestapiApplication  : Started ProductrestapiApplication in 4.641 seconds (JVM running for 5.631)
+2022-11-25 16:21:24.569  INFO 11944 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/productapi]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-25 18:26:19.238  INFO 11944 --- [RMI TCP Connection(132)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-25 18:26:19.240  INFO 11944 --- [RMI TCP Connection(132)-127.0.0.1] o.a.c.c.C.[.[localhost].[/productapi]    : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-25 18:26:19.252  INFO 11944 --- [RMI TCP Connection(132)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-25 18:26:19.259  INFO 11944 --- [RMI TCP Connection(132)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

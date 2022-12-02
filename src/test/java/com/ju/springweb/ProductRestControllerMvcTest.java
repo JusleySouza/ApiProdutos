@@ -3,6 +3,7 @@ package com.ju.springweb;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Arrays;
@@ -41,6 +42,8 @@ class ProductRestControllerMvcTest {
 		List<Product> products = Arrays.asList(product);
 		when(repository.findAll()).thenReturn(products);
 		
-		mockMvc.perform(get("/productapi/products/").contextPath("/productapi")).andExpect(status().isOk());
+		mockMvc.perform(get("/productapi/products/").contextPath("/productapi"))
+		.andExpect(status().isOk())
+		.andExpect(content().json("[{'id':1,'name':'MacBook','description':'Its Awesome!','price':1000}]"));
 	}
 }

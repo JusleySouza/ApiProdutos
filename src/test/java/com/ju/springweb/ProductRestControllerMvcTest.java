@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -69,6 +70,19 @@ class ProductRestControllerMvcTest {
 		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 		
 		mockMvc.perform(post(PRODUCTS_URL).contextPath(CONTEXT_URL).contentType(MediaType.APPLICATION_JSON)
+				.content(objectWriter.writeValueAsString(product))).andExpect(status().isOk())
+		.andExpect(content().json(objectWriter.writeValueAsString(product)));
+	}
+	
+	@Test
+	@WithMockUser(value="admin")
+	public void testUpdateProduct() throws JsonProcessingException, Exception {
+		Product product = buildProduct();
+		product.setPrice(1200);
+		when(repository.save(any())).thenReturn(product);
+		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		
+		mockMvc.perform(put(PRODUCTS_URL).contextPath(CONTEXT_URL).contentType(MediaType.APPLICATION_JSON)
 				.content(objectWriter.writeValueAsString(product))).andExpect(status().isOk())
 		.andExpect(content().json(objectWriter.writeValueAsString(product)));
 	}

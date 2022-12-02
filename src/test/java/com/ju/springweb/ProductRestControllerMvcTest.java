@@ -2,6 +2,7 @@ package com.ju.springweb;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -85,6 +86,14 @@ class ProductRestControllerMvcTest {
 		mockMvc.perform(put(PRODUCTS_URL).contextPath(CONTEXT_URL).contentType(MediaType.APPLICATION_JSON)
 				.content(objectWriter.writeValueAsString(product))).andExpect(status().isOk())
 		.andExpect(content().json(objectWriter.writeValueAsString(product)));
+	}
+	
+	@Test
+	@WithMockUser(value="admin")
+	public void deleteProduct() throws Exception {
+		doNothing().when(repository).deleteById(PRODUCT_ID);
+		
+		mockMvc.perform(delete(PRODUCTS_URL+PRODUCT_ID).contextPath(CONTEXT_URL)).andExpect(status().isOk());
 	}
 
 	private Product buildProduct() {

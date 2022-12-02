@@ -1,7 +1,9 @@
 package com.ju.springweb;
 
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -11,6 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -85,6 +88,18 @@ class ProductRestControllerMvcTest {
 		
 		mockMvc.perform(put(PRODUCTS_URL).contextPath(CONTEXT_URL).contentType(MediaType.APPLICATION_JSON)
 				.content(objectWriter.writeValueAsString(product))).andExpect(status().isOk())
+		.andExpect(content().json(objectWriter.writeValueAsString(product)));
+	}
+	
+	@Test
+	@WithMockUser(value="admin")
+	void testFindById() throws Exception {
+		Product product = buildProduct();
+		when(repository.findById(PRODUCT_ID)).thenReturn(Optional.of(product));
+		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		
+		mockMvc.perform(get(PRODUCTS_URL+PRODUCT_ID).contextPath(CONTEXT_URL))
+		.andExpect(status().isOk())
 		.andExpect(content().json(objectWriter.writeValueAsString(product)));
 	}
 	

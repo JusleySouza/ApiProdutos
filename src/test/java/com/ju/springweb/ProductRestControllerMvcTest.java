@@ -1,8 +1,9 @@
 package com.ju.springweb;
 
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -14,10 +15,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.ju.springweb.entities.Product;
@@ -53,10 +56,21 @@ class ProductRestControllerMvcTest {
 		when(repository.findAll()).thenReturn(products);
 		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 		
-		
 		mockMvc.perform(get(PRODUCTS_URL).contextPath(CONTEXT_URL))
 		.andExpect(status().isOk())
 		.andExpect(content().json(objectWriter.writeValueAsString(products)));
+	}
+	
+	@Test
+	@WithMockUser(value="admin")
+	public void testCreateProduct() throws JsonProcessingException, Exception {
+		Product product = buildProduct();
+		when(repository.save(any())).thenReturn(product);
+		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		
+		mockMvc.perform(post(PRODUCTS_URL).contextPath(CONTEXT_URL).contentType(MediaType.APPLICATION_JSON)
+				.content(objectWriter.writeValueAsString(product))).andExpect(status().isOk())
+		.andExpect(content().json(objectWriter.writeValueAsString(product)));
 	}
 
 	private Product buildProduct() {

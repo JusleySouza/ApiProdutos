@@ -18,12 +18,26 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.ju.springweb.entities.Product;
 import com.ju.springweb.repository.ProductRepository;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
 class ProductRestControllerMvcTest {
+
+	private static final String PRODUCTS_URL = "/productapi/products/";
+
+	private static final String CONTEXT_URL = "/productapi";
+
+	private static final int _PRODUCT_PRICE = 1000;
+
+	private static final String PRODUCT_DESCRIPTION_STRING = "Its Awesome!";
+
+	private static final String PRODUCT_NAME = "MacBook";
+
+	private static final int PRODUCT_ID = 1;
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -34,16 +48,23 @@ class ProductRestControllerMvcTest {
 	@Test
 	@WithMockUser(value="admin")
 	void testFindAll() throws Exception {
-		Product product = new Product();
-		product.setId(1);
-		product.setName("MacBook");
-		product.setDescription("Its Awesome!");
-		product.setPrice(1000);
+		Product product = buildProduct();
 		List<Product> products = Arrays.asList(product);
 		when(repository.findAll()).thenReturn(products);
+		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 		
-		mockMvc.perform(get("/productapi/products/").contextPath("/productapi"))
+		
+		mockMvc.perform(get(PRODUCTS_URL).contextPath(CONTEXT_URL))
 		.andExpect(status().isOk())
-		.andExpect(content().json("[{'id':1,'name':'MacBook','description':'Its Awesome!','price':1000}]"));
+		.andExpect(content().json(objectWriter.writeValueAsString(products)));
+	}
+
+	private Product buildProduct() {
+		Product product = new Product();
+		product.setId(PRODUCT_ID);
+		product.setName(PRODUCT_NAME);
+		product.setDescription(PRODUCT_DESCRIPTION_STRING);
+		product.setPrice(_PRODUCT_PRICE);
+		return product;
 	}
 }

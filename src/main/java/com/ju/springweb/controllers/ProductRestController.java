@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ju.springweb.entities.Product;
 import com.ju.springweb.repository.ProductRepository;
 
-import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
